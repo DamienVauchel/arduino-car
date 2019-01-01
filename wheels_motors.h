@@ -1,33 +1,3 @@
-// Uno R3 pins
-#define LEFT_SPEED 5
-#define RIGHT_SPEED 6
-#define LEFT_REAR 7
-#define LEFT_FRONT 8
-#define RIGHT_REAR 9
-#define RIGHT_FRONT 11
-
-void setup() {
-  Serial.begin(9600);
-  pinMode(RIGHT_REAR, OUTPUT);
-  pinMode(RIGHT_FRONT, OUTPUT);
-  pinMode(RIGHT_SPEED, OUTPUT);
-  pinMode(LEFT_REAR, OUTPUT);
-  pinMode(LEFT_FRONT, OUTPUT);
-  pinMode(LEFT_SPEED, OUTPUT);
-}
-
-void loop() {
-  goForward();
-  goSlower();
-  setSpeed(0);
-  delay(1000);
-  goForward();
-  goFaster();
-  stop(); 
-  delay(2000);
-}
-
-// Wheels motors 
 void enableWheelsMotors() {
   digitalWrite(RIGHT_SPEED, HIGH);
   digitalWrite(LEFT_SPEED, HIGH);
@@ -38,14 +8,7 @@ void disableWheelsMotors() {
   digitalWrite(LEFT_SPEED, LOW);
 }
 
-void stop() {
-  rightWheelsStop();
-  leftWheelsStop();
-  disableWheelsMotors();
-  Serial.println("Stop");
-}
-
-  // Directions
+// Directions
 void leftWheelsGoForward() {
   digitalWrite(LEFT_REAR, HIGH);
   digitalWrite(LEFT_FRONT, LOW);
@@ -104,7 +67,14 @@ void goRight() {
   Serial.println("Right");
 }
 
-  // Speed 
+// Speed 
+void stop() {
+  rightWheelsStop();
+  leftWheelsStop();
+  disableWheelsMotors();
+  Serial.println("Stop");
+}
+
 void setSpeed(int nb) {
   analogWrite(RIGHT_SPEED, nb);
   analogWrite(LEFT_SPEED, nb);
