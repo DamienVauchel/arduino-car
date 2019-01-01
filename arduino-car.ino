@@ -4,7 +4,9 @@
 
 void setup() {
     Serial.begin(9600);
-
+    
+    carSpeed = 150;
+    
     pinMode(RIGHT_REAR, OUTPUT);
     pinMode(RIGHT_FRONT, OUTPUT);
     pinMode(RIGHT_SPEED, OUTPUT);

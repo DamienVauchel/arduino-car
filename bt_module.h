@@ -1,6 +1,5 @@
 bool ledState = LOW;
 char btStr;
-unsigned char carSpeed = 150;
 
 void getBtStr() {
     btStr = Serial.read();
@@ -32,6 +31,15 @@ void btActions() {
             break;
         case 's':
             stop();
+            break;
+        case 'z':
+            carSpeed = 255;
+            break;
+        case 'e': 
+            carSpeed = 100;
+            break;
+        case 'n':
+            carSpeed = 150;
             break;
         default:
             break;
